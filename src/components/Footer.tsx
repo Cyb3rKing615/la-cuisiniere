@@ -14,7 +14,15 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
-            <p className="font-display text-3xl text-white">La Cuisinière</p>
+            <div className="relative h-16 w-16">
+              <Image
+                src="/images/logo-la-cuisiniere-dore.png"
+                alt="La Cuisinière"
+                fill
+                className="object-contain"
+                sizes="64px"
+              />
+            </div>
             <p className="mt-3 max-w-xs text-sm text-creme/80">
               La tomate béninoise, toute l&apos;année. Fabriqué à Cotonou,
               Bénin. Produits homologués ABSSA.

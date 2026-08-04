@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { products } from "@/lib/products";
@@ -13,10 +14,17 @@ export default function Header() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="font-display text-3xl text-tomate"
+          className="relative h-14 w-14 shrink-0"
           onClick={() => setMobileOpen(false)}
         >
-          La Cuisinière
+          <Image
+            src="/images/logo-la-cuisiniere-rouge.png"
+            alt="La Cuisinière"
+            fill
+            priority
+            className="object-contain"
+            sizes="56px"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-semibold tracking-wide text-foreground md:flex">

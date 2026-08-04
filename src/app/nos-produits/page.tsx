@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
+import ThreeColumnFeatures from "@/components/ThreeColumnFeatures";
 import { products } from "@/lib/products";
 import { recipes } from "@/lib/recipes";
 
@@ -107,26 +108,10 @@ export default function NosProduitsPage() {
         </div>
       </section>
 
-      <section className="bg-feuille py-20 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center font-display text-4xl sm:text-5xl">
-            3 bonnes raisons de choisir La Cuisinière
-          </h2>
-          <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
-            {advantages.map((advantage) => (
-              <div key={advantage.title} className="text-center">
-                <span className="text-5xl" aria-hidden>
-                  {advantage.icon}
-                </span>
-                <h3 className="mt-4 font-display text-2xl">
-                  {advantage.title}
-                </h3>
-                <p className="mt-2 text-sm text-white/85">{advantage.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ThreeColumnFeatures
+        title="3 bonnes raisons de choisir La Cuisinière"
+        features={advantages}
+      />
 
       <section className="bg-creme-deep py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
