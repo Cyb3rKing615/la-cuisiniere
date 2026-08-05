@@ -3,7 +3,6 @@ import ProductsShowcase from "@/components/home/ProductsShowcase";
 import BrandStory from "@/components/home/BrandStory";
 import FromFieldToPlate from "@/components/home/FromFieldToPlate";
 import RecipeIdeas from "@/components/home/RecipeIdeas";
-import JoinUs from "@/components/home/JoinUs";
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
       <BrandStory />
       <FromFieldToPlate />
       <RecipeIdeas />
-      <JoinUs />
     </>
   );
 }

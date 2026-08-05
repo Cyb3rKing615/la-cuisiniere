@@ -1,30 +1,36 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import { products } from "@/lib/products";
+import { getPublishedProducts } from "@/lib/notion";
 
 const socialLinks = [
-  { label: "Facebook", href: "#" },
-  { label: "Instagram", href: "#" },
-  { label: "TikTok", href: "#" },
+  { label: "Facebook", href: "https://www.facebook.com/lysdelamadoneagro" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/lysdelamadoneagro",
+  },
+  { label: "TikTok", href: "https://www.tiktok.com/@lysdelamadoneagro" },
 ];
 
-export default function Footer() {
+export default async function Footer() {
+  const products = await getPublishedProducts();
   return (
     <footer className="bg-feuille-dark text-creme">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
-            <Logo size={72} />
-            <p className="mt-3 max-w-xs text-sm text-creme/80">
+            <Logo size={92} />
+            <p className="mt-4 max-w-xs text-base text-creme/80">
               La tomate béninoise, toute l&apos;année. Fabriqué à Cotonou,
               Bénin. Produits homologués ABSSA.
             </p>
-            <div className="mt-5 flex gap-4 text-sm font-semibold">
+            <div className="mt-5 flex gap-4 text-base font-semibold">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="rounded-full border border-creme/30 px-4 py-1.5 hover:border-jaune hover:text-jaune"
                 >
                   {social.label}
@@ -34,10 +40,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-creme/50">
+            <p className="text-sm font-semibold uppercase tracking-wide text-creme/50">
               Nos produits
             </p>
-            <ul className="mt-4 space-y-2 text-sm">
+            <ul className="mt-4 space-y-2.5 text-base">
+              {products.length === 0 && (
+                <li className="text-creme/50">Bientôt disponible</li>
+              )}
               {products.map((product) => (
                 <li key={product.slug}>
                   <Link
@@ -52,13 +61,18 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-creme/50">
+            <p className="text-sm font-semibold uppercase tracking-wide text-creme/50">
               Découvrir
             </p>
-            <ul className="mt-4 space-y-2 text-sm">
+            <ul className="mt-4 space-y-2.5 text-base">
               <li>
                 <Link href="/recettes" className="hover:text-jaune">
                   Nos recettes
+                </Link>
+              </li>
+              <li>
+                <Link href="/astuces" className="hover:text-jaune">
+                  Nos astuces
                 </Link>
               </li>
               <li>
@@ -80,7 +94,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-creme/50">
+            <p className="text-sm font-semibold uppercase tracking-wide text-creme/50">
               Qualité &amp; confiance
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-4">
@@ -120,7 +134,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-creme/15 pt-6 text-xs text-creme/60 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-creme/15 pt-6 text-sm text-creme/60 sm:flex-row">
           <p>
             © {new Date().getFullYear()} La Cuisinière — Fabriqué à Cotonou,
             Bénin.

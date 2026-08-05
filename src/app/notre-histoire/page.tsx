@@ -37,7 +37,7 @@ const engagements = [
 export default function NotreHistoirePage() {
   return (
     <>
-      <section className="relative flex h-[440px] items-end overflow-hidden">
+      <section className="relative -mt-28 flex h-[460px] items-end overflow-hidden">
         <Image
           src="/images/heros1-carrousel-culturetomate.webp"
           alt="Culture de la tomate au Bénin"
@@ -47,6 +47,7 @@ export default function NotreHistoirePage() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/50 to-transparent" />
         <div className="relative z-10 w-full px-6 pb-12 sm:px-12">
           <div className="text-white/80">
             <Breadcrumb
@@ -56,7 +57,7 @@ export default function NotreHistoirePage() {
           <h1 className="mt-4 font-display text-5xl text-white sm:text-6xl">
             Notre histoire
           </h1>
-          <p className="mt-3 max-w-xl text-white/90">
+          <p className="mt-3 max-w-xl text-lg text-white/90">
             Depuis 2020, nous transformons la tomate béninoise pour soutenir
             nos producteurs et nourrir vos familles, toute l&apos;année.
           </p>
@@ -77,7 +78,7 @@ export default function NotreHistoirePage() {
           <h2 className="font-display text-3xl text-feuille sm:text-4xl">
             D&apos;où vient La Cuisinière
           </h2>
-          <p className="mt-5 text-foreground/80">
+          <p className="mt-5 text-lg text-foreground/80">
             Lys de la Madone Agro est née d&apos;une conviction simple : trop
             de tomates cultivées localement se perdent après la récolte,
             faute de débouché. Depuis 2020, nous transformons cette
@@ -85,7 +86,7 @@ export default function NotreHistoirePage() {
             — pour que rien ne se perde, et que chaque foyer profite du goût
             de la tomate béninoise, toute l&apos;année.
           </p>
-          <p className="mt-4 text-foreground/80">
+          <p className="mt-4 text-lg text-foreground/80">
             Ce projet est né d&apos;une volonté forte de soutenir les
             planteurs et de réduire le gaspillage alimentaire, en valorisant
             en particulier la production locale de tomates.
@@ -99,13 +100,13 @@ export default function NotreHistoirePage() {
             <h2 className="font-display text-2xl text-tomate">
               Notre vision
             </h2>
-            <p className="mt-4 text-sm text-foreground/80">
+            <p className="mt-4 text-base text-foreground/80">
               Devenir une référence de la transformation agroalimentaire au
               Bénin et dans la sous-région, en valorisant les produits locaux
               pour contribuer à la sécurité alimentaire et au développement
               économique.
             </p>
-            <p className="mt-3 text-sm text-foreground/80">
+            <p className="mt-3 text-base text-foreground/80">
               Nous encourageons aussi les agriculteurs à adopter une
               agriculture biologique, pour un développement durable de la
               filière.
@@ -115,7 +116,7 @@ export default function NotreHistoirePage() {
             <h2 className="font-display text-2xl text-tomate">
               Notre mission
             </h2>
-            <p className="mt-4 text-sm text-foreground/80">
+            <p className="mt-4 text-base text-foreground/80">
               Mettre à la disposition des consommateurs des produits de
               qualité, respectant les normes de l&apos;alimentation, à des
               prix accessibles.
@@ -142,7 +143,7 @@ export default function NotreHistoirePage() {
               >
                 ✓
               </span>
-              <span className="text-sm text-foreground/80">{engagement}</span>
+              <span className="text-base text-foreground/80">{engagement}</span>
             </li>
           ))}
         </ul>
@@ -159,7 +160,7 @@ export default function NotreHistoirePage() {
               sizes="112px"
             />
           </div>
-          <p className="text-sm text-foreground/80">
+          <p className="text-base text-foreground/80">
             Nos produits sont homologués par l&apos;ABSSA (Agence Béninoise
             de Sécurité Sanitaire des Aliments) et disposent des
             autorisations de mise sur le marché béninois.

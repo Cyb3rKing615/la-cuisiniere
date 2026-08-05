@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
+import RecipeCard from "@/components/RecipeCard";
 import ThreeColumnFeatures from "@/components/ThreeColumnFeatures";
-import { products } from "@/lib/products";
-import { recipes } from "@/lib/recipes";
+import { getPublishedProducts, getPublishedRecipes } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: "Nos produits | La Cuisinière",
@@ -30,11 +30,17 @@ const advantages = [
   },
 ];
 
-export default function NosProduitsPage() {
+export default async function NosProduitsPage() {
+  const [products, recipes] = await Promise.all([
+    getPublishedProducts(),
+    getPublishedRecipes(),
+  ]);
+
   return (
     <>
-      <section className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="flex flex-col justify-center gap-6 bg-feuille px-6 py-16 text-white sm:px-12 lg:py-24">
+      <section className="relative -mt-28 grid grid-cols-1 lg:grid-cols-2">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 bg-gradient-to-b from-black/40 to-transparent" />
+        <div className="flex flex-col justify-center gap-6 bg-feuille px-6 pb-16 pt-24 text-white sm:px-12 lg:pb-24 lg:pt-32">
           <Breadcrumb
             items={[
               { label: "Accueil", href: "/" },
@@ -42,27 +48,32 @@ export default function NosProduitsPage() {
             ]}
           />
           <h1 className="font-display text-5xl sm:text-6xl">Nos produits</h1>
-          <p className="max-w-md text-white/90">
+          <p className="max-w-md text-lg text-white/90">
             Des références 100% tomates béninoises, homologuées ABSSA, pour
             cuisiner simple, local et généreux, toute l&apos;année.
           </p>
-          <div className="mt-2 flex -space-x-6">
-            {products.slice(0, 3).map((product, i) => (
-              <div
-                key={product.slug}
-                className="relative h-28 w-28 overflow-hidden rounded-2xl border-4 border-feuille shadow-lg"
-                style={{ transform: `rotate(${(i - 1) * 6}deg)` }}
-              >
-                <Image
-                  src={product.packshot}
-                  alt={product.name}
-                  fill
-                  className="object-cover"
-                  sizes="112px"
-                />
-              </div>
-            ))}
-          </div>
+          {products.length > 0 && (
+            <div className="mt-2 flex -space-x-6">
+              {products.slice(0, 3).map((product, i) => (
+                <div
+                  key={product.slug}
+                  className="relative h-28 w-28 overflow-hidden rounded-2xl border-4 border-feuille bg-white/10 shadow-lg"
+                  style={{ transform: `rotate(${(i - 1) * 6}deg)` }}
+                >
+                  {product.packshot && (
+                    <Image
+                      src={product.packshot}
+                      alt={product.name}
+                      fill
+                      unoptimized
+                      className="object-cover"
+                      sizes="112px"
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="relative min-h-[280px]">
           <Image
@@ -76,36 +87,45 @@ export default function NosProduitsPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
-          {products.map((product) => (
-            <Link
-              key={product.slug}
-              href={`/nos-produits/${product.slug}`}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-black/5 bg-white transition-shadow hover:shadow-xl"
-            >
-              <div className="relative aspect-square bg-creme-deep">
-                <Image
-                  src={product.packshot}
-                  alt={product.name}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
-                />
-              </div>
-              <div className="flex flex-1 flex-col gap-1 p-4">
-                <span className="text-xs font-semibold uppercase tracking-wide text-tomate">
-                  {product.category}
-                </span>
-                <h2 className="font-display text-xl text-foreground">
-                  {product.name}
-                </h2>
-                <p className="mt-auto text-sm font-semibold text-feuille">
-                  Découvrir →
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
+        {products.length === 0 ? (
+          <p className="text-center text-foreground/60">
+            Notre gamme arrive très bientôt.
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
+            {products.map((product) => (
+              <Link
+                key={product.slug}
+                href={`/nos-produits/${product.slug}`}
+                className="group flex flex-col overflow-hidden rounded-3xl border border-black/5 bg-white transition-shadow hover:shadow-xl"
+              >
+                <div className="relative aspect-square bg-creme-deep">
+                  {product.packshot && (
+                    <Image
+                      src={product.packshot}
+                      alt={product.name}
+                      fill
+                      unoptimized
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
+                    />
+                  )}
+                </div>
+                <div className="flex flex-1 flex-col gap-1 p-4">
+                  <span className="text-sm font-semibold uppercase tracking-wide text-tomate">
+                    {product.category}
+                  </span>
+                  <h2 className="font-display text-xl text-foreground">
+                    {product.name}
+                  </h2>
+                  <p className="mt-auto text-base font-semibold text-feuille">
+                    Découvrir →
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
 
       <ThreeColumnFeatures
@@ -113,43 +133,23 @@ export default function NosProduitsPage() {
         features={advantages}
       />
 
-      <section className="bg-creme-deep py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center font-display text-4xl sm:text-5xl">
-            <span className="text-feuille">Des recettes</span>{" "}
-            <span className="text-tomate">pour toute la gamme</span>
-          </h2>
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {recipes.map((recipe) => (
-              <Link
-                key={recipe.slug}
-                href={`/recettes/${recipe.slug}`}
-                className="group overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-xl"
-              >
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={recipe.photo}
-                    alt={recipe.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-display text-lg leading-snug text-foreground">
-                    {recipe.title}
-                  </h3>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-feuille">
-                    {recipe.difficulty} · {recipe.prepTimeMinutes} min
-                  </p>
-                </div>
-              </Link>
-            ))}
+      {recipes.length > 0 && (
+        <section className="bg-creme-deep py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-center font-display text-4xl sm:text-5xl">
+              <span className="text-feuille">Des recettes</span>{" "}
+              <span className="text-tomate">pour toute la gamme</span>
+            </h2>
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {recipes.slice(0, 4).map((recipe) => (
+                <RecipeCard key={recipe.slug} recipe={recipe} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <section className="mx-auto max-w-3xl px-4 py-16 text-center text-sm text-foreground/70 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-3xl px-4 py-16 text-center text-base text-foreground/70 sm:px-6 lg:px-8">
         <p>
           Toute la gamme La Cuisinière est préparée à Cotonou à partir de
           tomates cultivées par des producteurs béninois. Purée de tomates,

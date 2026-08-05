@@ -1,9 +1,19 @@
 import Image from "next/image";
 
-export default function Logo({ size = 64 }: { size?: number }) {
+export default function Logo({
+  size = 64,
+  variant = "badge",
+}: {
+  size?: number;
+  variant?: "badge" | "plain";
+}) {
   return (
     <div
-      className="relative shrink-0 overflow-hidden rounded-2xl bg-tomate shadow-md"
+      className={
+        variant === "badge"
+          ? "relative shrink-0 overflow-hidden rounded-2xl bg-tomate shadow-md"
+          : "relative shrink-0"
+      }
       style={{ height: size, width: size }}
     >
       <Image
@@ -11,7 +21,7 @@ export default function Logo({ size = 64 }: { size?: number }) {
         alt="La Cuisinière"
         fill
         priority
-        className="object-contain p-2"
+        className={variant === "badge" ? "object-contain p-2" : "object-contain"}
         sizes={`${size}px`}
       />
     </div>

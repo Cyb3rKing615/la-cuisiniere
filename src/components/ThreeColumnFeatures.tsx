@@ -24,7 +24,7 @@ export default function ThreeColumnFeatures({
                 {feature.icon}
               </span>
               <h3 className="mt-4 font-display text-2xl">{feature.title}</h3>
-              <p className="mt-2 text-sm text-white/85">{feature.text}</p>
+              <p className="mt-2 text-base text-white/85">{feature.text}</p>
             </div>
           ))}
         </div>

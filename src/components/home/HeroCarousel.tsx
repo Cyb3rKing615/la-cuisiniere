@@ -68,7 +68,7 @@ export default function HeroCarousel() {
   }
 
   return (
-    <section className="relative h-[640px] max-h-[90vh] w-full overflow-hidden bg-feuille-dark text-white">
+    <section className="relative -mt-28 h-[640px] max-h-[90vh] w-full overflow-hidden bg-feuille-dark text-white">
       <div className="absolute inset-0 grid grid-cols-2">
         <div className="relative">
           <Image
@@ -92,6 +92,7 @@ export default function HeroCarousel() {
         </div>
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-black/10" />
+      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/50 to-transparent" />
 
       <button
         aria-label="Diapositive précédente"
@@ -117,13 +118,13 @@ export default function HeroCarousel() {
         </p>
         <Link
           href={slide.ctaHref}
-          className="w-fit rounded-full bg-tomate px-8 py-4 text-sm font-bold uppercase tracking-wide hover:bg-tomate-dark"
+          className="w-fit rounded-full bg-tomate px-8 py-4 text-base font-bold uppercase tracking-wide hover:bg-tomate-dark"
         >
           {slide.ctaLabel}
         </Link>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-10 flex items-center gap-6 px-6 pb-5 text-xs font-semibold uppercase tracking-wide sm:px-12">
+      <div className="absolute inset-x-0 bottom-0 z-10 flex items-center gap-6 px-6 pb-5 text-sm font-semibold uppercase tracking-wide sm:px-12">
         {slides.map((s, i) => (
           <button
             key={s.tabLabel}

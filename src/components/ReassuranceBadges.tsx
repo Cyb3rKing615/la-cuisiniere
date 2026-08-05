@@ -13,19 +13,19 @@ export default function ReassuranceBadges() {
             sizes="32px"
           />
         </div>
-        <span className="text-xs font-semibold text-foreground">
+        <span className="text-sm font-semibold text-foreground">
           Homologué ABSSA
         </span>
       </div>
       <div className="flex items-center gap-2 rounded-full border border-feuille/30 bg-white px-4 py-1.5">
         <span aria-hidden>🌿</span>
-        <span className="text-xs font-semibold text-foreground">
+        <span className="text-sm font-semibold text-foreground">
           Production biologique
         </span>
       </div>
       <div className="flex items-center gap-2 rounded-full border border-feuille/30 bg-white px-4 py-1.5">
         <span aria-hidden>⏳</span>
-        <span className="text-xs font-semibold text-foreground">
+        <span className="text-sm font-semibold text-foreground">
           Longue conservation
         </span>
       </div>

@@ -3,20 +3,23 @@ import Image from "next/image";
 const socials = [
   {
     label: "Facebook",
-    handle: "@LaCuisiniereBenin",
+    handle: "@lysdelamadoneagro",
+    href: "https://www.facebook.com/lysdelamadoneagro",
     badgeClass: "bg-[#1877F2]",
     tileClass: "bg-feuille",
   },
   {
     label: "Instagram",
-    handle: "lacuisiniere.bj",
+    handle: "@lysdelamadoneagro",
+    href: "https://www.instagram.com/lysdelamadoneagro",
     badgeClass: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]",
     tileClass: "",
     image: "/images/lien_insta.jpg",
   },
   {
     label: "TikTok",
-    handle: "@lacuisiniere.bj",
+    handle: "@lysdelamadoneagro",
+    href: "https://www.tiktok.com/@lysdelamadoneagro",
     badgeClass: "bg-black",
     tileClass: "bg-tomate",
   },
@@ -29,7 +32,7 @@ export default function JoinUs() {
         <h2 className="font-display text-4xl text-feuille sm:text-5xl">
           Rejoignez-nous
         </h2>
-        <p className="mt-4 text-foreground/70">
+        <p className="mt-4 text-lg text-foreground/70">
           Suivez La Cuisinière sur les réseaux pour nos recettes, nos coulisses
           et nos producteurs.
         </p>
@@ -39,7 +42,9 @@ export default function JoinUs() {
         {socials.map((social) => (
           <a
             key={social.label}
-            href="#"
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`group relative flex aspect-square flex-col justify-end overflow-hidden rounded-3xl p-5 text-white ${social.tileClass}`}
           >
             {social.image && (
@@ -54,13 +59,13 @@ export default function JoinUs() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0" />
             <div className="relative flex items-center gap-3">
               <span
-                className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold ${social.badgeClass}`}
+                className={`flex h-10 w-10 items-center justify-center rounded-full text-base font-bold ${social.badgeClass}`}
               >
                 {social.label[0]}
               </span>
               <div>
-                <p className="text-sm font-semibold">{social.label}</p>
-                <p className="text-xs text-white/80">{social.handle}</p>
+                <p className="text-base font-semibold">{social.label}</p>
+                <p className="text-sm text-white/80">{social.handle}</p>
               </div>
             </div>
           </a>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Lobster, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import JoinUs from "@/components/home/JoinUs";
+import { getPublishedProducts } from "@/lib/notion";
 import "./globals.css";
 
 const lobster = Lobster({
@@ -21,19 +23,23 @@ export const metadata: Metadata = {
     "La Cuisinière transforme la tomate locale en sauces et purées prêtes à l'emploi. Fabriqué à Cotonou, Bénin.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const products = await getPublishedProducts();
+  const headerProducts = products.map((p) => ({ name: p.name, slug: p.slug }));
+
   return (
     <html
       lang="fr"
       className={`${lobster.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
+        <Header products={headerProducts} />
+        <main className="flex-1 pt-28">{children}</main>
+        <JoinUs />
         <Footer />
       </body>
     </html>
