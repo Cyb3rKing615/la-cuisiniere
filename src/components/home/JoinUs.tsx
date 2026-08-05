@@ -9,6 +9,7 @@ const socials = [
     icon: IconFacebook,
     badgeClass: "bg-[#1877F2]",
     tileClass: "bg-feuille",
+    image: "/images/social-facebook.jpg",
   },
   {
     label: "Instagram",
@@ -26,6 +27,7 @@ const socials = [
     icon: IconTiktok,
     badgeClass: "bg-black",
     tileClass: "bg-tomate",
+    image: "/images/social-tiktok.png",
   },
 ];
 
