@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Sparkles, Lightbulb, HeartHandshake, Check } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import ThreeColumnFeatures from "@/components/ThreeColumnFeatures";
 
@@ -11,17 +12,17 @@ export const metadata: Metadata = {
 
 const valeurs = [
   {
-    icon: "✨",
+    icon: Sparkles,
     title: "Qualité et authenticité",
     text: "Fraîcheur et goût naturel, sans artifices, dans le respect des normes d'hygiène et de qualité.",
   },
   {
-    icon: "💡",
+    icon: Lightbulb,
     title: "Innovation",
     text: "Une maîtrise constante de la transformation, pour des produits savoureux et toujours constants.",
   },
   {
-    icon: "🤝",
+    icon: HeartHandshake,
     title: "Ancrage social",
     text: "Le soutien aux agriculteurs et maraîchers, et la création d'emplois pour les jeunes et les femmes.",
   },
@@ -138,10 +139,10 @@ export default function NotreHistoirePage() {
               className="flex items-start gap-3 rounded-2xl bg-creme-deep p-5"
             >
               <span
-                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-feuille text-xs text-white"
+                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-feuille text-white"
                 aria-hidden
               >
-                ✓
+                <Check className="h-3.5 w-3.5" />
               </span>
               <span className="text-base text-foreground/80">{engagement}</span>
             </li>

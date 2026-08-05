@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ShieldCheck, MapPin, PackageCheck, ShoppingCart, UtensilsCrossed, Building2 } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import ThreeColumnFeatures from "@/components/ThreeColumnFeatures";
 import { IconArrowUpRight, IconWhatsapp } from "@/components/icons";
@@ -15,17 +16,17 @@ export const metadata: Metadata = {
 
 const advantages = [
   {
-    icon: "🛡️",
+    icon: ShieldCheck,
     title: "Fiabilité",
     text: "Des produits homologués ABSSA, avec autorisation de mise sur le marché béninois — une qualité constante, lot après lot.",
   },
   {
-    icon: "🍅",
+    icon: MapPin,
     title: "Origine locale",
     text: "Une tomate béninoise transformée sur place, pour une offre locale que vous pouvez valoriser auprès de vos clients.",
   },
   {
-    icon: "📦",
+    icon: PackageCheck,
     title: "Disponibilité",
     text: "Une production pensée pour la longue conservation, disponible toute l'année, sans dépendre des saisons.",
   },
@@ -33,17 +34,17 @@ const advantages = [
 
 const segments = [
   {
-    icon: "🛒",
+    icon: ShoppingCart,
     title: "Supermarchés / alimentations",
     text: "Des formats adaptés à la revente (350 g à 1000 g selon les produits), pour proposer à vos clients une option locale et constante à côté de l'offre importée.",
   },
   {
-    icon: "🍽️",
+    icon: UtensilsCrossed,
     title: "Restaurants",
     text: "Une base tomate fiable et savoureuse, en grand format, pour des plats réguliers, service après service — sans compromis sur le goût.",
   },
   {
-    icon: "🏨",
+    icon: Building2,
     title: "Hôtels",
     text: "Valorisez le local dans votre carte : une tomate béninoise transformée avec soin, pour une restauration qui a une vraie histoire à raconter à vos clients.",
   },
@@ -111,8 +112,8 @@ export default async function ProfessionnelsPage() {
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {segments.map((segment) => (
             <div key={segment.title} className="rounded-3xl bg-creme-deep p-8">
-              <span className="text-4xl" aria-hidden>
-                {segment.icon}
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-feuille/10 text-feuille-dark">
+                <segment.icon className="h-7 w-7" aria-hidden />
               </span>
               <h3 className="mt-4 font-display text-2xl text-foreground">
                 {segment.title}

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Pause, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type Slide = {
@@ -143,7 +144,11 @@ export default function HeroCarousel() {
           aria-label={playing ? "Mettre en pause" : "Lancer la lecture"}
           className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-white/20 normal-case hover:bg-white/30"
         >
-          {playing ? "❚❚" : "▶"}
+          {playing ? (
+            <Pause className="h-3.5 w-3.5 fill-current" />
+          ) : (
+            <Play className="h-3.5 w-3.5 fill-current" />
+          )}
         </button>
       </div>
     </section>

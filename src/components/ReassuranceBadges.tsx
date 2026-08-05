@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Leaf, Hourglass } from "lucide-react";
 
 export default function ReassuranceBadges() {
   return (
@@ -18,13 +19,13 @@ export default function ReassuranceBadges() {
         </span>
       </div>
       <div className="flex items-center gap-2 rounded-full border border-feuille/30 bg-white px-4 py-1.5">
-        <span aria-hidden>🌿</span>
+        <Leaf className="h-4 w-4 text-feuille-dark" aria-hidden />
         <span className="text-sm font-semibold text-foreground">
           Production biologique
         </span>
       </div>
       <div className="flex items-center gap-2 rounded-full border border-feuille/30 bg-white px-4 py-1.5">
-        <span aria-hidden>⏳</span>
+        <Hourglass className="h-4 w-4 text-feuille-dark" aria-hidden />
         <span className="text-sm font-semibold text-foreground">
           Longue conservation
         </span>

@@ -1,10 +1,12 @@
 import Image from "next/image";
+import { IconFacebook, IconInstagram, IconTiktok } from "@/components/icons";
 
 const socials = [
   {
     label: "Facebook",
     handle: "@lysdelamadoneagro",
     href: "https://www.facebook.com/lysdelamadoneagro",
+    icon: IconFacebook,
     badgeClass: "bg-[#1877F2]",
     tileClass: "bg-feuille",
   },
@@ -12,6 +14,7 @@ const socials = [
     label: "Instagram",
     handle: "@lysdelamadoneagro",
     href: "https://www.instagram.com/lysdelamadoneagro",
+    icon: IconInstagram,
     badgeClass: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]",
     tileClass: "",
     image: "/images/lien_insta.jpg",
@@ -20,6 +23,7 @@ const socials = [
     label: "TikTok",
     handle: "@lysdelamadoneagro",
     href: "https://www.tiktok.com/@lysdelamadoneagro",
+    icon: IconTiktok,
     badgeClass: "bg-black",
     tileClass: "bg-tomate",
   },
@@ -59,9 +63,9 @@ export default function JoinUs() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0" />
             <div className="relative flex items-center gap-3">
               <span
-                className={`flex h-10 w-10 items-center justify-center rounded-full text-base font-bold ${social.badgeClass}`}
+                className={`flex h-10 w-10 items-center justify-center rounded-full text-white ${social.badgeClass}`}
               >
-                {social.label[0]}
+                <social.icon className="h-5 w-5" />
               </span>
               <div>
                 <p className="text-base font-semibold">{social.label}</p>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Leaf, ShieldCheck, Factory } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import RecipeCard from "@/components/RecipeCard";
 import ThreeColumnFeatures from "@/components/ThreeColumnFeatures";
@@ -14,17 +15,17 @@ export const metadata: Metadata = {
 
 const advantages = [
   {
-    icon: "🍅",
+    icon: Leaf,
     title: "100% tomates locales",
     text: "Nos tomates sont cultivées par des producteurs béninois, récoltées et transformées près de chez vous.",
   },
   {
-    icon: "🌿",
+    icon: ShieldCheck,
     title: "Sans conservateurs",
     text: "Des recettes simples, sans artifice, pour retrouver le vrai goût de la tomate.",
   },
   {
-    icon: "🏭",
+    icon: Factory,
     title: "Fait à Cotonou",
     text: "Chaque pot est préparé au Bénin, pour soutenir une filière locale du champ à l'assiette.",
   },

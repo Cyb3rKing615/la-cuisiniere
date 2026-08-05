@@ -1,15 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import { IconFacebook, IconInstagram, IconTiktok } from "@/components/icons";
 import { getPublishedProducts } from "@/lib/notion";
 
 const socialLinks = [
-  { label: "Facebook", href: "https://www.facebook.com/lysdelamadoneagro" },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/lysdelamadoneagro",
+    icon: IconFacebook,
+  },
   {
     label: "Instagram",
     href: "https://www.instagram.com/lysdelamadoneagro",
+    icon: IconInstagram,
   },
-  { label: "TikTok", href: "https://www.tiktok.com/@lysdelamadoneagro" },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@lysdelamadoneagro",
+    icon: IconTiktok,
+  },
 ];
 
 export default async function Footer() {
@@ -24,16 +34,17 @@ export default async function Footer() {
               La tomate béninoise, toute l&apos;année. Fabriqué à Cotonou,
               Bénin. Produits homologués ABSSA.
             </p>
-            <div className="mt-5 flex gap-4 text-base font-semibold">
+            <div className="mt-5 flex gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-creme/30 px-4 py-1.5 hover:border-jaune hover:text-jaune"
+                  aria-label={social.label}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-creme/30 text-creme hover:border-jaune hover:text-jaune"
                 >
-                  {social.label}
+                  <social.icon className="h-5 w-5" />
                 </a>
               ))}
             </div>

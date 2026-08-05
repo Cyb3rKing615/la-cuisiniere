@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Check } from "lucide-react";
 import type { BlockObjectResponse } from "@notionhq/client";
 
 type RichText = Extract<
@@ -77,10 +78,10 @@ export default function NotionBlocks({
             return (
               <li key={item.id} className="flex items-start gap-3">
                 <span
-                  className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-feuille text-[10px] text-white"
+                  className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-feuille text-white"
                   aria-hidden
                 >
-                  ✓
+                  <Check className="h-3 w-3" />
                 </span>
                 <span className="text-lg text-foreground/80">
                   <RichText segments={item.bulleted_list_item.rich_text} />
