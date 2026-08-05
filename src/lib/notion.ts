@@ -11,6 +11,7 @@ export const DATA_SOURCES = {
   produits: "e8e0b6c3-051f-4ec4-8740-701995db4c0f",
   recettes: "78736905-b3b1-4319-8a4b-f0799c060bed",
   astuces: "1bcc4073-23e0-431a-9aba-711761b3cd85",
+  demandesPro: "4a61f7ab-1229-4497-a6d4-d4a8674385de",
 } as const;
 
 type Properties = PageObjectResponse["properties"];

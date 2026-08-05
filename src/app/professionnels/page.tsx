@@ -5,6 +5,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import ThreeColumnFeatures from "@/components/ThreeColumnFeatures";
 import { IconArrowUpRight, IconWhatsapp } from "@/components/icons";
 import { getPublishedProducts } from "@/lib/notion";
+import ProContactForm from "./ProContactForm";
 
 export const metadata: Metadata = {
   title: "Professionnels | La Cuisinière",
@@ -176,8 +177,8 @@ export default async function ProfessionnelsPage() {
         </section>
       )}
 
-      <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border-2 border-feuille-dark bg-white p-8 text-center sm:p-12">
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="text-center">
           <h2 className="font-display text-3xl text-foreground sm:text-4xl">
             Devenir partenaire
           </h2>
@@ -186,16 +187,42 @@ export default async function ProfessionnelsPage() {
             Contactez-nous pour discuter de vos besoins et de nos conditions
             professionnelles.
           </p>
-          <a
-            href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-7 inline-flex items-center gap-2 rounded-full bg-feuille-dark px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-feuille"
-          >
-            <IconWhatsapp className="h-5 w-5" />
-            Nous contacter
-            <IconArrowUpRight className="h-4 w-4" />
-          </a>
+        </div>
+
+        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-[1.4fr_1fr]">
+          <div className="rounded-3xl border border-black/5 bg-white p-8 shadow-sm sm:p-10">
+            <h3 className="font-display text-2xl text-feuille-dark">
+              Écrivez-nous
+            </h3>
+            <p className="mt-2 text-sm text-foreground/60">
+              Le moyen le plus simple pour nous transmettre les détails de
+              votre demande.
+            </p>
+            <div className="mt-6">
+              <ProContactForm />
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-center rounded-3xl border-2 border-feuille-dark bg-creme-deep p-8 text-center sm:p-10">
+            <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-feuille-dark text-white">
+              <IconWhatsapp className="h-7 w-7" />
+            </span>
+            <h3 className="mt-4 font-display text-2xl text-foreground">
+              Ou par WhatsApp
+            </h3>
+            <p className="mt-2 text-sm text-foreground/70">
+              Pour une réponse plus directe et rapide.
+            </p>
+            <a
+              href={WHATSAPP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-feuille-dark px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-feuille"
+            >
+              Nous contacter
+              <IconArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </section>
     </>

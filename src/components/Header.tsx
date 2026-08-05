@@ -12,6 +12,7 @@ export type HeaderProduct = { name: string; slug: string };
 export default function Header({ products }: { products: HeaderProduct[] }) {
   const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
+  const [recettesOpen, setRecettesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -87,11 +88,40 @@ export default function Header({ products }: { products: HeaderProduct[] }) {
               </div>
             )}
           </div>
-          <Link href="/recettes" className="py-2">
-            Recettes
-          </Link>
-          <Link href="/astuces" className="py-2">
-            Astuces
+          <div
+            className="relative"
+            onMouseEnter={() => setRecettesOpen(true)}
+            onMouseLeave={() => setRecettesOpen(false)}
+          >
+            <button
+              className="flex items-center gap-1.5 py-2"
+              onClick={() => setRecettesOpen((open) => !open)}
+              aria-expanded={recettesOpen}
+            >
+              Recettes &amp; astuces
+              <span aria-hidden>▾</span>
+            </button>
+            {recettesOpen && (
+              <div className="absolute left-0 top-full w-56 rounded-2xl border border-black/5 bg-white p-3 shadow-xl">
+                <Link
+                  href="/recettes"
+                  className="block rounded-xl px-4 py-2 text-base text-foreground hover:bg-creme-deep hover:text-tomate"
+                  onClick={() => setRecettesOpen(false)}
+                >
+                  Nos recettes
+                </Link>
+                <Link
+                  href="/astuces"
+                  className="block rounded-xl px-4 py-2 text-base text-foreground hover:bg-creme-deep hover:text-tomate"
+                  onClick={() => setRecettesOpen(false)}
+                >
+                  Nos astuces
+                </Link>
+              </div>
+            )}
+          </div>
+          <Link href="/professionnels" className="py-2">
+            Professionnels
           </Link>
         </nav>
 
@@ -153,19 +183,29 @@ export default function Header({ products }: { products: HeaderProduct[] }) {
               {product.name}
             </Link>
           ))}
+          <span className="pt-3 pb-1 text-xs uppercase tracking-wide text-foreground/50">
+            Recettes &amp; astuces
+          </span>
           <Link
             href="/recettes"
-            className="mt-2 rounded-lg px-2 py-2 hover:bg-creme-deep hover:text-tomate"
+            className="rounded-lg px-2 py-2 hover:bg-creme-deep hover:text-tomate"
             onClick={() => setMobileOpen(false)}
           >
-            Recettes
+            Nos recettes
           </Link>
           <Link
             href="/astuces"
             className="rounded-lg px-2 py-2 hover:bg-creme-deep hover:text-tomate"
             onClick={() => setMobileOpen(false)}
           >
-            Astuces
+            Nos astuces
+          </Link>
+          <Link
+            href="/professionnels"
+            className="mt-2 rounded-lg px-2 py-2 hover:bg-creme-deep hover:text-tomate"
+            onClick={() => setMobileOpen(false)}
+          >
+            Professionnels
           </Link>
           <Link
             href="/notre-histoire"
