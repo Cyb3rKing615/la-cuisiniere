@@ -56,11 +56,11 @@ export default function HeroCarousel() {
 
   useEffect(() => {
     if (!playing) return;
-    const timer = setInterval(() => {
+    const timer = setTimeout(() => {
       setIndex((current) => (current + 1) % slides.length);
     }, AUTOPLAY_MS);
-    return () => clearInterval(timer);
-  }, [playing]);
+    return () => clearTimeout(timer);
+  }, [playing, index]);
 
   const slide = slides[index];
 
@@ -130,13 +130,23 @@ export default function HeroCarousel() {
           <button
             key={s.tabLabel}
             onClick={() => goTo(i)}
-            className={`border-b-2 pb-1 transition-colors ${
-              i === index
-                ? "border-jaune text-jaune"
-                : "border-transparent text-white/60 hover:text-white"
+            className={`flex flex-col items-start gap-2 pb-1 transition-colors ${
+              i === index ? "text-jaune" : "text-white/60 hover:text-white"
             }`}
           >
             {s.tabLabel}
+            <span className="h-1.5 w-14 overflow-hidden rounded-full bg-white/25 sm:w-20">
+              {i === index && (
+                <span
+                  key={index}
+                  className="block h-full rounded-full bg-tomate"
+                  style={{
+                    animation: `carousel-progress ${AUTOPLAY_MS}ms linear forwards`,
+                    animationPlayState: playing ? "running" : "paused",
+                  }}
+                />
+              )}
+            </span>
           </button>
         ))}
         <button
