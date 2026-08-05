@@ -9,6 +9,10 @@ const HERO_PATHS = ["/", "/notre-histoire", "/nos-produits"];
 
 export type HeaderProduct = { name: string; slug: string };
 
+function shortProductName(name: string) {
+  return name.replace(/\s*La Cuisinière$/i, "");
+}
+
 export default function Header({ products }: { products: HeaderProduct[] }) {
   const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
@@ -180,7 +184,7 @@ export default function Header({ products }: { products: HeaderProduct[] }) {
               className="rounded-lg px-2 py-2 hover:bg-creme-deep hover:text-tomate"
               onClick={() => setMobileOpen(false)}
             >
-              {product.name}
+              {shortProductName(product.name)}
             </Link>
           ))}
           <span className="pt-3 pb-1 text-xs uppercase tracking-wide text-foreground/50">
