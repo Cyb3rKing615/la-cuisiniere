@@ -90,6 +90,11 @@ export default async function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link href="/professionnels" className="hover:text-jaune">
+                  Espace pro
+                </Link>
+              </li>
             </ul>
           </div>
 
