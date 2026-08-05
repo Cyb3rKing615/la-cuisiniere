@@ -106,7 +106,7 @@ export default async function RecettePage({
             <h2 className="font-display text-3xl text-foreground sm:text-4xl">
               Les produits qu&apos;il vous faut
             </h2>
-            <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-4">
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {relatedProducts.map((product) => (
                 <Link
                   key={product.slug}
