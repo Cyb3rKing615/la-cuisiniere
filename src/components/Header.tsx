@@ -9,10 +9,6 @@ const HERO_PATHS = ["/", "/notre-histoire", "/nos-produits"];
 
 export type HeaderProduct = { name: string; slug: string };
 
-function shortProductName(name: string) {
-  return name.replace(/\s*La Cuisinière$/i, "");
-}
-
 export default function Header({ products }: { products: HeaderProduct[] }) {
   const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
@@ -44,14 +40,9 @@ export default function Header({ products }: { products: HeaderProduct[] }) {
           : "border-b border-black/5 bg-creme/95 backdrop-blur"
       }`}
     >
-      <div className="mx-auto grid h-28 max-w-7xl grid-cols-2 items-center px-4 sm:px-6 md:grid-cols-[1fr_auto_1fr] lg:px-8">
-        {/* Mobile logo (left) */}
-        <Link href="/" className="md:hidden" onClick={() => setMobileOpen(false)}>
-          <Logo size={68} variant={transparent ? "plain" : "badge"} />
-        </Link>
-
+      <div className="mx-auto grid h-28 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 lg:px-8">
         {/* Desktop nav — left group */}
-        <nav className={`hidden items-center gap-8 text-base font-semibold tracking-wide md:flex ${linkColor}`}>
+        <nav className={`col-start-1 hidden items-center gap-8 text-base font-semibold tracking-wide md:flex ${linkColor}`}>
           <div
             className="relative"
             onMouseEnter={() => setProductsOpen(true)}
@@ -129,47 +120,54 @@ export default function Header({ products }: { products: HeaderProduct[] }) {
           </Link>
         </nav>
 
-        {/* Desktop centered logo */}
+        {/* Logo — always centered, both mobile and desktop */}
         <Link
           href="/"
-          className="hidden justify-self-center md:block"
+          className="col-start-2 justify-self-center"
           onClick={() => setMobileOpen(false)}
         >
-          <Logo size={100} variant={transparent ? "plain" : "badge"} />
+          <span className="block md:hidden">
+            <Logo size={68} variant={transparent ? "plain" : "badge"} />
+          </span>
+          <span className="hidden md:block">
+            <Logo size={100} variant={transparent ? "plain" : "badge"} />
+          </span>
         </Link>
 
-        {/* Desktop nav — right group */}
-        <nav
-          className={`hidden items-center justify-end gap-8 text-base font-semibold tracking-wide md:flex ${linkColor}`}
-        >
-          <Link href="/notre-histoire" className="py-2">
-            Notre histoire
-          </Link>
-          <Link href="/ou-nous-trouver" className="py-2">
-            Où nous trouver
-          </Link>
-          <Link href="/contact" className="py-2">
-            Contact
-          </Link>
-        </nav>
+        {/* Right group: desktop nav + mobile burger */}
+        <div className="col-start-3 flex items-center justify-end gap-4">
+          <nav
+            className={`hidden items-center gap-8 text-base font-semibold tracking-wide md:flex ${linkColor}`}
+          >
+            <Link href="/notre-histoire" className="py-2">
+              Notre histoire
+            </Link>
+            <Link href="/ou-nous-trouver" className="py-2">
+              Où nous trouver
+            </Link>
+            <Link href="/contact" className="py-2">
+              Contact
+            </Link>
+          </nav>
 
-        {/* Mobile burger (right) */}
-        <button
-          className="flex h-10 w-10 flex-col items-center justify-center justify-self-end gap-1.5 md:hidden"
-          onClick={() => setMobileOpen((open) => !open)}
-          aria-expanded={mobileOpen}
-          aria-label="Ouvrir le menu"
-        >
-          <span
-            className={`h-0.5 w-6 transition-transform ${transparent ? "bg-white" : "bg-foreground"} ${mobileOpen ? "translate-y-2 rotate-45" : ""}`}
-          />
-          <span
-            className={`h-0.5 w-6 transition-opacity ${transparent ? "bg-white" : "bg-foreground"} ${mobileOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`h-0.5 w-6 transition-transform ${transparent ? "bg-white" : "bg-foreground"} ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`}
-          />
-        </button>
+          {/* Mobile burger */}
+          <button
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-expanded={mobileOpen}
+            aria-label="Ouvrir le menu"
+          >
+            <span
+              className={`h-0.5 w-6 transition-transform ${transparent ? "bg-white" : "bg-foreground"} ${mobileOpen ? "translate-y-2 rotate-45" : ""}`}
+            />
+            <span
+              className={`h-0.5 w-6 transition-opacity ${transparent ? "bg-white" : "bg-foreground"} ${mobileOpen ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`h-0.5 w-6 transition-transform ${transparent ? "bg-white" : "bg-foreground"} ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`}
+            />
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
@@ -184,7 +182,7 @@ export default function Header({ products }: { products: HeaderProduct[] }) {
               className="rounded-lg px-2 py-2 hover:bg-creme-deep hover:text-tomate"
               onClick={() => setMobileOpen(false)}
             >
-              {shortProductName(product.name)}
+              {product.name}
             </Link>
           ))}
           <span className="pt-3 pb-1 text-xs uppercase tracking-wide text-foreground/50">

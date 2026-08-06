@@ -133,7 +133,7 @@ function mapProduct(page: PageObjectResponse): NotionProduct {
   const formats = richText(p, "Poids/Format");
   return {
     id: page.id,
-    name: title(p, "Nom"),
+    name: title(p, "Nom").replace(/\s*La Cuisinière$/i, ""),
     category: select(p, "Catégorie") ?? "",
     description: richText(p, "Description courte"),
     weights: formats
