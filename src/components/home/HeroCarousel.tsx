@@ -44,7 +44,7 @@ const slides: Slide[] = [
   },
 ];
 
-const AUTOPLAY_MS = 6000;
+const AUTOPLAY_MS = 3500;
 
 export default function HeroCarousel() {
   const [index, setIndex] = useState(0);
