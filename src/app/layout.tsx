@@ -3,6 +3,7 @@ import { Lobster, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JoinUs from "@/components/home/JoinUs";
+import ChatBubbleButton from "@/components/assistant/ChatBubbleButton";
 import { getPublishedProducts } from "@/lib/notion";
 import "./globals.css";
 
@@ -41,6 +42,7 @@ export default async function RootLayout({
         <main className="flex-1 pt-28">{children}</main>
         <JoinUs />
         <Footer />
+        <ChatBubbleButton products={headerProducts} />
       </body>
     </html>
   );
