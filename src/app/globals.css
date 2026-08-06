@@ -41,3 +41,31 @@ body {
     width: 100%;
   }
 }
+
+@keyframes mascotte-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(160%) scale(0.5) rotate(-12deg);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-16%) scale(1.1) rotate(5deg);
+  }
+  75% {
+    transform: translateY(4%) scale(0.97) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes mascotte-idle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
