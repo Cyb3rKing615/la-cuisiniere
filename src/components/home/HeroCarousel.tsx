@@ -13,6 +13,8 @@ type Slide = {
   ctaHref: string;
   imageLeft: string;
   imageRight: string;
+  /** Sur mobile, l'image mise en avant — l'autre ne reste visible qu'en aperçu. */
+  mobileFocus: "left" | "right";
 };
 
 const slides: Slide[] = [
@@ -25,6 +27,7 @@ const slides: Slide[] = [
     ctaHref: "/nos-produits",
     imageLeft: "/images/heros1-carrousel-culturetomate.webp",
     imageRight: "/images/heros2-carrousel-culturetomate.jpg",
+    mobileFocus: "left",
   },
   {
     tabLabel: "100% naturel",
@@ -35,6 +38,7 @@ const slides: Slide[] = [
     ctaHref: "/notre-histoire",
     imageLeft: "/images/heros1-carrousel-zerospesticide.jpg",
     imageRight: "/images/heros2-carousel-zerospesticide.jpg",
+    mobileFocus: "right",
   },
   {
     tabLabel: "Nos recettes",
@@ -45,6 +49,7 @@ const slides: Slide[] = [
     ctaHref: "/recettes",
     imageLeft: "/images/heros1-carrousel-nosrecettes.jpg",
     imageRight: "/images/heros2-carrousel-nosrecettes.jpg",
+    mobileFocus: "left",
   },
 ];
 
@@ -71,7 +76,11 @@ export default function HeroCarousel() {
   return (
     <section className="relative -mt-28 h-[640px] max-h-[90vh] w-full overflow-hidden bg-feuille-dark text-white">
       <div className="absolute inset-0 flex">
-        <div className="relative h-full w-1/2">
+        <div
+          className={`relative h-full ${
+            slide.mobileFocus === "left" ? "w-[85%]" : "w-[15%]"
+          } sm:w-1/2`}
+        >
           <Image
             src={slide.imageLeft}
             alt=""
@@ -81,7 +90,11 @@ export default function HeroCarousel() {
             sizes="50vw"
           />
         </div>
-        <div className="relative h-full w-1/2">
+        <div
+          className={`relative h-full ${
+            slide.mobileFocus === "right" ? "w-[85%]" : "w-[15%]"
+          } sm:w-1/2`}
+        >
           <Image
             src={slide.imageRight}
             alt=""
