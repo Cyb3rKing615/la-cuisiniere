@@ -11,7 +11,8 @@ type Slide = {
   subtitle: string;
   ctaLabel: string;
   ctaHref: string;
-  image: string;
+  imageLeft: string;
+  imageRight: string;
 };
 
 const slides: Slide[] = [
@@ -22,7 +23,8 @@ const slides: Slide[] = [
       "La Cuisinière transforme la tomate locale en sauces et purées prêtes à l'emploi — pour cuisiner simple, toute l'année, tout en soutenant les producteurs d'ici.",
     ctaLabel: "Découvrir nos produits",
     ctaHref: "/nos-produits",
-    image: "/images/heros1-carrousel-culturetomate.webp",
+    imageLeft: "/images/heros1-carrousel-culturetomate.webp",
+    imageRight: "/images/heros2-carrousel-culturetomate.jpg",
   },
   {
     tabLabel: "100% naturel",
@@ -31,7 +33,8 @@ const slides: Slide[] = [
       "Des sauces préparées simplement, à partir de tomates béninoises sélectionnées avec soin, pour un goût qui ne dépend jamais du calendrier.",
     ctaLabel: "Découvrir notre histoire",
     ctaHref: "/notre-histoire",
-    image: "/images/heros1-carrousel-zerospesticide.jpg",
+    imageLeft: "/images/heros1-carrousel-zerospesticide.jpg",
+    imageRight: "/images/heros2-carousel-zerospesticide.jpg",
   },
   {
     tabLabel: "Nos recettes",
@@ -40,7 +43,8 @@ const slides: Slide[] = [
       "Des recettes simples et gourmandes, pensées pour nos sauces et purées — pour cuisiner local, toute l'année.",
     ctaLabel: "Découvrir nos recettes",
     ctaHref: "/recettes",
-    image: "/images/heros1-carrousel-nosrecettes.jpg",
+    imageLeft: "/images/heros1-carrousel-nosrecettes.jpg",
+    imageRight: "/images/heros2-carrousel-nosrecettes.jpg",
   },
 ];
 
@@ -66,15 +70,27 @@ export default function HeroCarousel() {
 
   return (
     <section className="relative -mt-28 h-[640px] max-h-[90vh] w-full overflow-hidden bg-feuille-dark text-white">
-      <div className="absolute inset-0">
-        <Image
-          src={slide.image}
-          alt=""
-          fill
-          priority={index === 0}
-          className="object-cover"
-          sizes="100vw"
-        />
+      <div className="absolute inset-0 flex">
+        <div className="relative h-full w-1/2">
+          <Image
+            src={slide.imageLeft}
+            alt=""
+            fill
+            priority={index === 0}
+            className="object-cover"
+            sizes="50vw"
+          />
+        </div>
+        <div className="relative h-full w-1/2">
+          <Image
+            src={slide.imageRight}
+            alt=""
+            fill
+            priority={index === 0}
+            className="object-cover"
+            sizes="50vw"
+          />
+        </div>
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10" />
       <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/50 to-transparent" />
