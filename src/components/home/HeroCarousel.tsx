@@ -78,7 +78,7 @@ export default function HeroCarousel() {
       <div className="absolute inset-0 flex">
         <div
           className={`relative h-full ${
-            slide.mobileFocus === "left" ? "w-[85%]" : "w-[15%]"
+            slide.mobileFocus === "left" ? "w-full" : "w-0"
           } sm:w-1/2`}
         >
           <Image
@@ -92,7 +92,7 @@ export default function HeroCarousel() {
         </div>
         <div
           className={`relative h-full ${
-            slide.mobileFocus === "right" ? "w-[85%]" : "w-[15%]"
+            slide.mobileFocus === "right" ? "w-full" : "w-0"
           } sm:w-1/2`}
         >
           <Image
