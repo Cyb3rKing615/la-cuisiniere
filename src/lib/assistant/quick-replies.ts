@@ -10,7 +10,7 @@ export function whatsappHref(message: string) {
 }
 
 export const WELCOME_MESSAGE =
-  "Bonjour, je suis Barbara ! 🍅 Je peux t'aider à découvrir nos produits, nos recettes ou nos points de vente. Que cherches-tu ?";
+  "Bonjour, je suis Barbara ! 🍅 Je peux t'aider à découvrir nos produits, nos coffrets, nos recettes ou nos points de vente. Que cherches-tu ?";
 
 export const PRODUCTS_MENU_MESSAGE =
   "Voici nos produits — clique sur celui qui t'intéresse :";

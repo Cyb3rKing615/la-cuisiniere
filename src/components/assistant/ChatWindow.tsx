@@ -54,6 +54,7 @@ export default function ChatWindow({
 
   const mainOptions: QuickReplyOption[] = [
     { label: "Voir nos produits", onClick: openProductsMenu },
+    { label: "Voir nos coffrets", href: "/coffrets", onClick: onClose },
     { label: "Découvrir une recette", href: "/recettes", onClick: onClose },
     { label: "Où nous trouver", href: "/ou-nous-trouver", onClick: onClose },
     {
