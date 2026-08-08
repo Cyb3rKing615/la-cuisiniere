@@ -88,21 +88,21 @@ export default async function ProductPage({
                 {product.weights.length > 1 ? "Formats disponibles" : "Format"}
               </p>
               <div className="mt-2 flex flex-wrap gap-2">
-                {product.weights.map((w) => (
+                {product.weights.map((w, i) => (
                   <span
                     key={w}
                     className="rounded-full border-2 border-feuille/30 px-4 py-1.5 text-sm font-semibold text-feuille-dark"
                   >
                     {w}
+                    {product.prices[i] !== undefined && (
+                      <span className="ml-2 text-tomate">
+                        {formatFCFA(product.prices[i])}
+                      </span>
+                    )}
                   </span>
                 ))}
               </div>
             </div>
-          )}
-          {product.price !== null && (
-            <p className="mt-5 text-2xl font-bold text-tomate">
-              {formatFCFA(product.price)}
-            </p>
           )}
           <div className="mt-6">
             <ReassuranceBadges />

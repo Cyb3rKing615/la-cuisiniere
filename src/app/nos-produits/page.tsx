@@ -6,6 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import RecipeCard from "@/components/RecipeCard";
 import ThreeColumnFeatures from "@/components/ThreeColumnFeatures";
 import { getPublishedProducts, getPublishedRecipes } from "@/lib/notion";
+import { formatFCFA } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Nos produits | La Cuisinière",
@@ -119,6 +120,11 @@ export default async function NosProduitsPage() {
                   <h2 className="font-display text-xl text-foreground">
                     {product.name}
                   </h2>
+                  {product.prices.length > 0 && (
+                    <p className="text-sm font-semibold text-feuille-dark">
+                      À partir de {formatFCFA(Math.min(...product.prices))}
+                    </p>
+                  )}
                   <p className="mt-auto text-base font-semibold text-feuille">
                     Découvrir →
                   </p>

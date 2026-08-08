@@ -121,11 +121,11 @@ export type NotionProduct = {
   category: string;
   description: string;
   weights: string[];
+  prices: number[];
   keyPoints: string[];
   packshot: string | null;
   dishPhoto: string | null;
   slug: string;
-  price: number | null;
   relatedRecipeIds: string[];
 };
 
@@ -133,6 +133,7 @@ function mapProduct(page: PageObjectResponse): NotionProduct {
   const p = page.properties;
   const points = richText(p, "Points clés");
   const formats = richText(p, "Poids/Format");
+  const prices = richText(p, "Prix/Format");
   return {
     id: page.id,
     name: title(p, "Nom").replace(/\s*La Cuisinière$/i, ""),
@@ -141,13 +142,18 @@ function mapProduct(page: PageObjectResponse): NotionProduct {
     weights: formats
       ? formats.split("·").map((s) => s.trim()).filter(Boolean)
       : [],
+    prices: prices
+      ? prices
+          .split("·")
+          .map((s) => Number(s.trim()))
+          .filter((n) => Number.isFinite(n))
+      : [],
     keyPoints: points
       ? points.split("·").map((s) => s.trim()).filter(Boolean)
       : [],
     packshot: files(p, "Photo packshot")[0] ?? null,
     dishPhoto: files(p, "Photo plat fini")[0] ?? null,
     slug: richText(p, "Slug"),
-    price: numberProp(p, "Prix"),
     relatedRecipeIds: relationIds(p, "Recettes liées"),
   };
 }
