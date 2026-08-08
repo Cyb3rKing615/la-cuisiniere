@@ -12,6 +12,7 @@ export const DATA_SOURCES = {
   recettes: "78736905-b3b1-4319-8a4b-f0799c060bed",
   astuces: "1bcc4073-23e0-431a-9aba-711761b3cd85",
   demandesPro: "4a61f7ab-1229-4497-a6d4-d4a8674385de",
+  coffrets: "5fb9701d-e768-4079-9180-bbc0b665d354",
 } as const;
 
 type Properties = PageObjectResponse["properties"];
@@ -124,6 +125,7 @@ export type NotionProduct = {
   packshot: string | null;
   dishPhoto: string | null;
   slug: string;
+  price: number | null;
   relatedRecipeIds: string[];
 };
 
@@ -145,6 +147,7 @@ function mapProduct(page: PageObjectResponse): NotionProduct {
     packshot: files(p, "Photo packshot")[0] ?? null,
     dishPhoto: files(p, "Photo plat fini")[0] ?? null,
     slug: richText(p, "Slug"),
+    price: numberProp(p, "Prix"),
     relatedRecipeIds: relationIds(p, "Recettes liées"),
   };
 }
@@ -239,4 +242,50 @@ export async function getTipBySlug(slug: string) {
   if (!page) return null;
   const blocks = await getPageBlocks(page.id);
   return { tip: mapTip(page), blocks };
+}
+
+// ---------- Coffrets ----------
+
+export type NotionCoffret = {
+  id: string;
+  name: string;
+  slug: string;
+  occasion: string | null;
+  price: number | null;
+  promoPrice: number | null;
+  contents: string[];
+  photo: string | null;
+  availability: string | null;
+  relatedProductIds: string[];
+};
+
+function mapCoffret(page: PageObjectResponse): NotionCoffret {
+  const p = page.properties;
+  const contents = richText(p, "Contenu du coffret");
+  return {
+    id: page.id,
+    name: title(p, "Nom"),
+    slug: richText(p, "Slug"),
+    occasion: select(p, "Occasion"),
+    price: numberProp(p, "Prix"),
+    promoPrice: numberProp(p, "Prix promo"),
+    contents: contents
+      ? contents.split("·").map((s) => s.trim()).filter(Boolean)
+      : [],
+    photo: files(p, "Photo")[0] ?? null,
+    availability: select(p, "Disponibilité"),
+    relatedProductIds: relationIds(p, "Nos produits inclus"),
+  };
+}
+
+export async function getPublishedCoffrets(): Promise<NotionCoffret[]> {
+  const pages = await queryPublished(DATA_SOURCES.coffrets);
+  return pages.map(mapCoffret);
+}
+
+export async function getCoffretBySlug(slug: string) {
+  const page = await queryOneBySlug(DATA_SOURCES.coffrets, slug);
+  if (!page) return null;
+  const blocks = await getPageBlocks(page.id);
+  return { coffret: mapCoffret(page), blocks };
 }

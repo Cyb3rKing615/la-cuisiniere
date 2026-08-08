@@ -77,6 +77,11 @@ export default async function Footer() {
             </p>
             <ul className="mt-4 space-y-2.5 text-base">
               <li>
+                <Link href="/coffrets" className="hover:text-jaune">
+                  Nos coffrets
+                </Link>
+              </li>
+              <li>
                 <Link href="/recettes" className="hover:text-jaune">
                   Nos recettes
                 </Link>

@@ -80,6 +80,13 @@ export default function Header({ products }: { products: HeaderProduct[] }) {
                 >
                   Tous nos produits
                 </Link>
+                <Link
+                  href="/coffrets"
+                  className="block rounded-xl px-4 py-2 text-base text-feuille hover:bg-creme-deep"
+                  onClick={() => setProductsOpen(false)}
+                >
+                  Nos coffrets
+                </Link>
               </div>
             )}
           </div>
@@ -185,6 +192,13 @@ export default function Header({ products }: { products: HeaderProduct[] }) {
               {product.name}
             </Link>
           ))}
+          <Link
+            href="/coffrets"
+            className="rounded-lg px-2 py-2 hover:bg-creme-deep hover:text-tomate"
+            onClick={() => setMobileOpen(false)}
+          >
+            Nos coffrets
+          </Link>
           <span className="pt-3 pb-1 text-xs uppercase tracking-wide text-foreground/50">
             Recettes &amp; astuces
           </span>

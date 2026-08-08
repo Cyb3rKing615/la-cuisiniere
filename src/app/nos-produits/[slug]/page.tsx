@@ -10,6 +10,7 @@ import {
   getPublishedProducts,
   getPublishedRecipes,
 } from "@/lib/notion";
+import { formatFCFA } from "@/lib/format";
 
 export async function generateStaticParams() {
   const products = await getPublishedProducts();
@@ -97,6 +98,11 @@ export default async function ProductPage({
                 ))}
               </div>
             </div>
+          )}
+          {product.price !== null && (
+            <p className="mt-5 text-2xl font-bold text-tomate">
+              {formatFCFA(product.price)}
+            </p>
           )}
           <div className="mt-6">
             <ReassuranceBadges />
