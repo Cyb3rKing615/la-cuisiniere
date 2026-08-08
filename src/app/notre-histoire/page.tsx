@@ -76,7 +76,16 @@ export default function NotreHistoirePage() {
           />
         </div>
         <div>
-          <h2 className="font-display text-3xl text-feuille sm:text-4xl">
+          <div className="relative h-16 w-40">
+            <Image
+              src="/images/logo-lys-de-la-madone-agro.png"
+              alt="Lys de la Madone Agro"
+              fill
+              className="object-contain object-left"
+              sizes="160px"
+            />
+          </div>
+          <h2 className="mt-4 font-display text-3xl text-feuille sm:text-4xl">
             D&apos;où vient La Cuisinière
           </h2>
           <p className="mt-5 text-lg text-foreground/80">
