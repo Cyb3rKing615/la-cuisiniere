@@ -160,7 +160,15 @@ export default async function Footer() {
             © {new Date().getFullYear()} La Cuisinière — Fabriqué à Cotonou,
             Bénin.
           </p>
-          <p>Site conçu par Novavox</p>
+          <div className="flex items-center gap-4">
+            <Link href="/politique-de-confidentialite" className="hover:text-jaune">
+              Politique de confidentialité
+            </Link>
+            <Link href="/cookies" className="hover:text-jaune">
+              Cookies
+            </Link>
+            <p>Site conçu par Novavox</p>
+          </div>
         </div>
       </div>
     </footer>

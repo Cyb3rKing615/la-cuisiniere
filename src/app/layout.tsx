@@ -4,6 +4,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JoinUs from "@/components/home/JoinUs";
 import ChatBubbleButton from "@/components/assistant/ChatBubbleButton";
+import { CookieConsentProvider } from "@/components/cookies/CookieConsentProvider";
+import CookieBanner from "@/components/cookies/CookieBanner";
+import GoogleAnalytics from "@/components/cookies/GoogleAnalytics";
 import { getPublishedProducts } from "@/lib/notion";
 import "./globals.css";
 
@@ -38,11 +41,15 @@ export default async function RootLayout({
       className={`${lobster.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Header products={headerProducts} />
-        <main className="flex-1 pt-28">{children}</main>
-        <JoinUs />
-        <Footer />
-        <ChatBubbleButton products={headerProducts} />
+        <CookieConsentProvider>
+          <Header products={headerProducts} />
+          <main className="flex-1 pt-28">{children}</main>
+          <JoinUs />
+          <Footer />
+          <ChatBubbleButton products={headerProducts} />
+          <CookieBanner />
+          <GoogleAnalytics />
+        </CookieConsentProvider>
       </body>
     </html>
   );
