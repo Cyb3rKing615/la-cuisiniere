@@ -63,7 +63,6 @@ export default async function CoffretsPage() {
                         src={coffret.photo}
                         alt={coffret.name}
                         fill
-                        unoptimized
                         className="object-cover"
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       />

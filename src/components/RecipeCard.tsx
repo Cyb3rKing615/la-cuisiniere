@@ -21,7 +21,6 @@ export default function RecipeCard({ recipe }: { recipe: NotionRecipe }) {
             src={recipe.photo}
             alt={recipe.title}
             fill
-            unoptimized
             className="object-cover transition-transform duration-300 group-hover:scale-105"
             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
           />

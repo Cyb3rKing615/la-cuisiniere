@@ -73,7 +73,6 @@ export default async function RecettePage({
               src={recipe.photo}
               alt={recipe.title}
               fill
-              unoptimized
               priority
               className="object-cover"
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -119,7 +118,6 @@ export default async function RecettePage({
                         src={product.packshot}
                         alt={product.name}
                         fill
-                        unoptimized
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                         sizes="(min-width: 1024px) 20vw, 40vw"
                       />

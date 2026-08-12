@@ -31,7 +31,6 @@ export default async function ProductsShowcase() {
                   src={product.packshot}
                   alt={product.name}
                   fill
-                  unoptimized
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
                 />

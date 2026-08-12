@@ -52,7 +52,6 @@ export default async function AstucePage({
             src={tip.cover}
             alt={tip.title}
             fill
-            unoptimized
             priority
             className="object-cover"
             sizes="100vw"
