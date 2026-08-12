@@ -25,8 +25,8 @@ const slides: Slide[] = [
       "La Cuisinière transforme la tomate locale en sauces et purées prêtes à l'emploi — pour cuisiner simple, toute l'année, tout en soutenant les producteurs d'ici.",
     ctaLabel: "Découvrir nos produits",
     ctaHref: "/nos-produits",
-    imageLeft: "/images/heros1-carrousel-culturetomate.webp",
-    imageRight: "/images/heros2-carrousel-culturetomate.jpg",
+    imageLeft: "/images/culture-tomate-recolte.png",
+    imageRight: "/images/culture-tomate-grappe.jpg",
     mobileFocus: "left",
   },
   {

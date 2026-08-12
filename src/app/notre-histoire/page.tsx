@@ -40,7 +40,7 @@ export default function NotreHistoirePage() {
     <>
       <section className="relative -mt-28 flex h-[460px] items-end overflow-hidden">
         <Image
-          src="/images/heros1-carrousel-culturetomate.webp"
+          src="/images/culture-tomate-recolte.png"
           alt="Culture de la tomate au Bénin"
           fill
           priority
@@ -68,7 +68,7 @@ export default function NotreHistoirePage() {
       <section className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
           <Image
-            src="/images/heros2-carrousel-culturetomate.jpg"
+            src="/images/culture-tomate-grappe.jpg"
             alt="Récolte de tomates chez nos producteurs béninois"
             fill
             className="object-cover"

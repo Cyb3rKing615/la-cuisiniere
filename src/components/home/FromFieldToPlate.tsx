@@ -5,7 +5,7 @@ export default function FromFieldToPlate() {
   return (
     <section className="relative flex h-[440px] items-center overflow-hidden">
       <Image
-        src="/images/heros1-carrousel-culturetomate.webp"
+        src="/images/culture-tomate-recolte.png"
         alt="Récolte de tomates chez nos producteurs béninois"
         fill
         className="object-cover"
